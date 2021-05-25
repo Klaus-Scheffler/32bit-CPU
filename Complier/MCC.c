@@ -5,7 +5,7 @@
 #define flen 4096
 #define mlen 262144
 
- 
+#test
  
 #define RAMO  0b00000000000000000000000000000001 //~RAM out
 #define IRI   0b00000000000000000000000000000010 //~Instruction Reg in
