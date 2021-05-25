@@ -1,0 +1,25 @@
+main:
+			PUSH	%BP
+			MOV	%SP,%BP
+@main_body:
+			SUB	%SP,$4000,%SP
+			SUB	%SP,$4,%SP
+			MOV	$0,-4004(%BP)
+@while0:
+			CMP	-4004(%BP),$10
+			JGE	@false0
+@true0:
+			MOV	-4000(%BP),%0
+			MOV	(%0),%0
+			MOV	-4004(%BP),-4004(%BP)
+			ADD	%0,-4004(%BP),%0
+			ADD	-4004(%BP),$1,%0
+			MOV	%0,-4004(%BP)
+			JMP	@while0
+@false0:
+@exit0:
+@main_exit:
+			MOV	%BP,%SP
+			POP	%BP
+			RET
+

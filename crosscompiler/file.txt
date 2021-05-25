@@ -1,0 +1,40 @@
+swap:
+   PUSH	%BP
+   MOV  %SP,%BP
+@swap_body:
+   MOV  8(%BP),%0
+   MOV  (%0),%0
+   SUB  %SP,$4,%SP
+   MOV  %0,-4(%BP)
+   MOV  12(%BP),%0
+   MOV  (%0),%0
+   MOV  8(%BP),%1
+   MOV  %0,(%1)
+   MOV  12(%BP),%0
+   MOV  -4(%BP),(%0)
+@swap_exit:
+   MOV  %BP,%SP
+   POP  %BP
+   RET 
+main:
+   PUSH	%BP
+   MOV  %SP,%BP
+@main_body:
+   SUB  %SP,$4,%SP
+   MOV  $5,-4(%BP)
+   SUB  %SP,$4,%SP
+   MOV  $10,-8(%BP)
+   LEA  -4(%BP),%0
+   LEA  -8(%BP),%1
+   PUSH	%1
+   PUSH	%0
+   CALL	swap
+   ADD  %SP,$8,%SP
+   MOV  $0,%13
+   JMP  @main_exit
+@main_exit:
+   MOV  %BP,%SP
+   POP  %BP
+   RET
+
+

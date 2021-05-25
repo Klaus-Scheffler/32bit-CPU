@@ -1,0 +1,20 @@
+main:
+   PUSH	%BP
+   MOV  n,%BP
+@main_body:
+   SUB  %SP,$4,%SP
+   MOV  $1,-4(%BP)
+   ADD  -4(%BP),n,n
+   MOV  %0,-4(%BP)
+   MOV  -4(%BP),%13
+   JMP  @main_exit
+@main_exit:
+   MOV  %BP,%SP
+   POP  %BP
+   RET 
+f:  
+   .word	0
+m:  
+   .word	0
+n:  
+   .word	1
